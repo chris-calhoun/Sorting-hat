@@ -6,6 +6,9 @@ const houseNames = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
 const domEvents = () => {
   document.querySelector('#btnShowForm').addEventListener('click', showForm);
   document.querySelector('#sort-form').addEventListener('click', sortStudent);
+  document
+    .querySelector('#student-cards')
+    .addEventListener('click', expelStudent);
 };
 
 const renderToDOM = (divId, textToPrint) => {
@@ -81,6 +84,16 @@ const cardBuilder = () => {
     domString += `</div></div>`;
   }
   renderToDOM('student-cards', domString);
+};
+
+// remove student card when expel button is clicked.
+const expelStudent = e => {
+  const target = e.target.id;
+  const targetType = e.target.type;
+  if (targetType === 'button') {
+    studentsArray.splice(target, 1);
+    cardBuilder();
+  }
 };
 
 domEvents();

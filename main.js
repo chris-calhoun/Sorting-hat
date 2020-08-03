@@ -5,6 +5,7 @@ const houseNames = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
 
 const domEvents = () => {
   document.querySelector('#btnShowForm').addEventListener('click', showForm);
+  document.querySelector('#sort-form').addEventListener('click', sortStudent);
 };
 
 const renderToDOM = (divId, textToPrint) => {
@@ -39,6 +40,14 @@ const houseSelection = () => {
   const randomNum = Math.floor(Math.random() * houseNames.length);
   const house = houseNames[randomNum];
   return house;
+};
+
+// sort student into house
+const sortStudent = () => {
+  const name = document.getElementById('input-student').value;
+  studentsArray.push({ studentName: name, house: houseSelection() });
+  document.querySelector('#studentForm').reset();
+  return studentsArray;
 };
 
 domEvents();

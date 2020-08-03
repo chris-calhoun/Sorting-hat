@@ -34,4 +34,11 @@ const showForm = () => {
   renderToDOM('sort-form', domString);
 };
 
+// return a random house when called
+const houseSelection = () => {
+  const randomNum = Math.floor(Math.random() * houseNames.length);
+  const house = houseNames[randomNum];
+  return house;
+};
+
 domEvents();

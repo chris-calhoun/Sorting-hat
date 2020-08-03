@@ -52,7 +52,7 @@ const sortStudent = e => {
     } else {
       studentsArray.push({ studentName: name, house: houseSelection() });
       document.querySelector('#studentForm').reset();
-      return studentsArray;
+      cardBuilder();
     }
   }
 };
@@ -61,12 +61,26 @@ const sortStudent = e => {
 const errorMessage = () => {
   let errorString = '';
   errorString += `<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">`;
-  errorString += `Please enter you name in the form.`;
+  errorString += `Please enter your name in the form.`;
   errorString += `<button type="button" class="close" data-dismiss="alert" aria-label="Close">`;
   errorString += `<span aria-hidden="true">&times;</span>`;
   errorString += `</button>`;
   errorString += `</div>`;
   renderToDOM('error-message', errorString);
+};
+
+// create student card when called
+const cardBuilder = () => {
+  let domString = '';
+  for (let i = 0; i < studentsArray.length; i++) {
+    domString += `<div class="card m-4" id="${i}" style="width: 18rem;">`;
+    domString += `<div class="card-body text-center">`;
+    domString += `<h5 class="card-title">${studentsArray[i].studentName}</h5>`;
+    domString += `<h6 class="card-subtitle mb-2 text-muted">${studentsArray[i].house}</h6>`;
+    domString += `<button type="button" class="btn btn-secondary" id=${i}>Expel</button>`;
+    domString += `</div></div>`;
+  }
+  renderToDOM('student-cards', domString);
 };
 
 domEvents();

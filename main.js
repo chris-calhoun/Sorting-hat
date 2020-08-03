@@ -29,6 +29,7 @@ const showForm = () => {
                           <input
                           type="student"
                           class="form-control"
+                          placeholder="Harry Potter"
                           id="input-student"/>
                               <button type="button" class="btn btn-info" id="btn-sort">Sort!</button>
                       </div>
@@ -80,10 +81,11 @@ const cardBuilder = () => {
     domString += `<div class="card-body text-center">`;
     domString += `<h5 class="card-title">${studentsArray[i].studentName}</h5>`;
     domString += `<h6 class="card-subtitle mb-2 text-muted">${studentsArray[i].house}</h6>`;
-    domString += `<button type="button" class="btn btn-secondary" id=${i}>Expel</button>`;
+    domString += `<button type="button" class="btn btn-danger" id=${i}>Expel</button>`;
     domString += `</div></div>`;
   }
   renderToDOM('student-cards', domString);
+  houseColors();
 };
 
 // remove student card when expel button is clicked.
@@ -93,6 +95,17 @@ const expelStudent = e => {
   if (targetType === 'button') {
     studentsArray.splice(target, 1);
     cardBuilder();
+  }
+};
+
+// change color of card to house colors
+const houseColors = () => {
+  for (let i = 0; i < studentsArray.length; i++) {
+    if (studentsArray[i].houseNames === 'Gryffindor') {
+      document.querySelector(`#${i}`).style.backgroundColor = 'red';
+    } else {
+      document.querySelector(`#${i}`).style.backgroundColor = 'blue';
+    }
   }
 };
 

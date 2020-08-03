@@ -43,11 +43,30 @@ const houseSelection = () => {
 };
 
 // sort student into house
-const sortStudent = () => {
-  const name = document.getElementById('input-student').value;
-  studentsArray.push({ studentName: name, house: houseSelection() });
-  document.querySelector('#studentForm').reset();
-  return studentsArray;
+const sortStudent = e => {
+  const target = e.target.id;
+  if (target === 'btn-sort') {
+    const name = document.getElementById('input-student').value;
+    if (name.length === 0) {
+      errorMessage();
+    } else {
+      studentsArray.push({ studentName: name, house: houseSelection() });
+      document.querySelector('#studentForm').reset();
+      return studentsArray;
+    }
+  }
+};
+
+// show error message when input is empty
+const errorMessage = () => {
+  let errorString = '';
+  errorString += `<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">`;
+  errorString += `Please enter you name in the form.`;
+  errorString += `<button type="button" class="close" data-dismiss="alert" aria-label="Close">`;
+  errorString += `<span aria-hidden="true">&times;</span>`;
+  errorString += `</button>`;
+  errorString += `</div>`;
+  renderToDOM('error-message', errorString);
 };
 
 domEvents();

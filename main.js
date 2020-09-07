@@ -18,7 +18,7 @@ const renderToDOM = (divId, textToPrint) => {
 
 //show sort form when "Let's get sorting button is clicked"
 const showForm = () => {
-  let domString = `<div class = "container text-center mb-3">
+  let domString = `<div class = "container-fluid text-center mb-3">
                     <h4>Enter first year's name. </h4>
                         </div>
                     <div class = "name-input">                  
@@ -79,13 +79,12 @@ const cardBuilder = () => {
   for (let i = 0; i < studentsArray.length; i++) {
     domString += `<div class="card m-4" id="${i}" style="width: 18rem;">`;
     domString += `<div class="card-body text-center">`;
-    domString += `<h5 class="card-title">${studentsArray[i].studentName}</h5>`;
-    domString += `<h6 class="card-subtitle mb-2 text-muted">${studentsArray[i].house}</h6>`;
+    domString += `<h5 class="card-title-${i}">${studentsArray[i].studentName}</h5>`;
+    domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${studentsArray[i].house}</h6>`;
     domString += `<button type="button" class="btn btn-danger" id=${i}>Expel</button>`;
     domString += `</div></div>`;
   }
   renderToDOM('student-cards', domString);
-  houseColors();
 };
 
 // remove student card when expel button is clicked.
@@ -100,11 +99,12 @@ const expelStudent = e => {
 
 // change color of card to house colors
 const houseColors = () => {
+  var currentCard = document.getElementById(`card-house-${i}`);
   for (let i = 0; i < studentsArray.length; i++) {
-    if (studentsArray[i].houseNames === 'Gryffindor') {
+    if (currentCard === 'Gryffindor') {
       document.querySelector(`#${i}`).style.backgroundColor = 'red';
     } else {
-      document.querySelector(`#${i}`).style.backgroundColor = 'blue';
+      document.querySelector(`#${i}`).style.backgroundColor = 'green';
     }
   }
 };

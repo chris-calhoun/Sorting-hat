@@ -77,7 +77,7 @@ const errorMessage = () => {
 const cardBuilder = () => {
   let domString = '';
   for (let i = 0; i < studentsArray.length; i++) {
-    domString += `<div class="card m-4" id="${i}" style="width: 18rem;">`;
+    domString += `<div class="card m-4" id="${i}" style="width: 18rem; background-color: ${getHouseColor(studentsArray[i].house)};">`;
     domString += `<div class="card-body text-center">`;
     domString += `<h5 class="card-title-${i}">${studentsArray[i].studentName}</h5>`;
     domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${studentsArray[i].house}</h6>`;
@@ -98,15 +98,16 @@ const expelStudent = e => {
 };
 
 // change color of card to house colors
-const houseColors = () => {
-  var currentCard = document.getElementById(`card-house-${i}`);
-  for (let i = 0; i < studentsArray.length; i++) {
-    if (currentCard === 'Gryffindor') {
-      document.querySelector(`#${i}`).style.backgroundColor = 'red';
-    } else {
-      document.querySelector(`#${i}`).style.backgroundColor = 'green';
-    }
+const getHouseColor = (house) => {
+  if (house === 'Gryffindor') {
+    return 'red'
+  } else if (house === 'Slytherin') {
+    return 'green'
+  } else if (house === 'Hufflepuff') {
+    return 'blue'
+  } else if (house === 'Ravenclaw') {
+    return 'yellow'
   }
-};
+}
 
 domEvents();

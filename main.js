@@ -1,6 +1,7 @@
 'use strict';
 
 const studentsArray = [];
+const expelledStudent = [];
 const houseNames = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
 
 const domEvents = () => {
@@ -47,7 +48,7 @@ const houseSelection = () => {
 };
 
 // sort student into house
-const sortStudent = e => {
+const sortStudent = (e) => {
   const target = e.target.id;
   if (target === 'btn-sort') {
     const name = document.getElementById('input-student').value;
@@ -56,7 +57,7 @@ const sortStudent = e => {
     } else {
       studentsArray.push({ studentName: name, house: houseSelection() });
       document.querySelector('#studentForm').reset();
-      cardBuilder();
+      cardBuilder(studentsArray, 'student-cards');
     }
   }
 };
@@ -74,40 +75,45 @@ const errorMessage = () => {
 };
 
 // create student card when called
-const cardBuilder = () => {
+const cardBuilder = (arr, div) => {
   let domString = '';
-  for (let i = 0; i < studentsArray.length; i++) {
-    domString += `<div class="card m-4" id="${i}" style="width: 18rem; background-color: ${getHouseColor(studentsArray[i].house)};">`;
+  for (let i = 0; i < arr.length; i++) {
+    domString += `<div class="card m-4" id="${i}" style="width: 18rem; background-color: ${getHouseColor(
+      arr[i].house
+    )};">`;
     domString += `<div class="card-body text-center">`;
-    domString += `<h5 class="card-title-${i}">${studentsArray[i].studentName}</h5>`;
-    domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${studentsArray[i].house}</h6>`;
+    domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
+    domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${arr[i].house}</h6>`;
     domString += `<button type="button" class="btn btn-danger" id=${i}>Expel</button>`;
     domString += `</div></div>`;
   }
-  renderToDOM('student-cards', domString);
+  renderToDOM(div, domString);
 };
 
 // remove student card when expel button is clicked.
-const expelStudent = e => {
+const expelStudent = (e) => {
   const target = e.target.id;
   const targetType = e.target.type;
   if (targetType === 'button') {
-    studentsArray.splice(target, 1);
-    cardBuilder();
+    const expelled = studentsArray.splice(target, 1);
+    cardBuilder(studentsArray, 'student-cards');
+
+    expelledStudent.push(expelled[0]);
+    cardBuilder(expelledStudent, 'expelled-students');
   }
 };
 
 // change color of card to house colors
 const getHouseColor = (house) => {
   if (house === 'Gryffindor') {
-    return 'red'
+    return 'red';
   } else if (house === 'Slytherin') {
-    return 'green'
+    return 'green';
   } else if (house === 'Hufflepuff') {
-    return 'blue'
+    return 'blue';
   } else if (house === 'Ravenclaw') {
-    return 'yellow'
+    return 'yellow';
   }
-}
+};
 
 domEvents();

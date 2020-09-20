@@ -91,7 +91,7 @@ const cardBuilder = (arr, div) => {
       domString += `</div></div>`;
     } else {
       domString += `<div class="card-body text-center">`;
-      domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
+      domString += `<h5 class="card-title-${i}" style = "color: white;">${arr[i].studentName}</h5>`;
       domString += `<div class = "container"><img src = "./images/Death_Eater.png" alt = "death eater symbol" width = "200px" </div>`;
       domString += `</div></div>`;
     }

@@ -1,0 +1,9 @@
+.jumbotron {
+  background-image: url('./images/harry-potter.jpg');
+  background-size: cover;
+}
+
+@font-face {
+  font-family: hPotterFont;
+  src: url('./fonts/HARRYP__.TTF');
+}

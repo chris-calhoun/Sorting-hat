@@ -20,11 +20,11 @@ const renderToDOM = (divId, textToPrint) => {
 //show sort form when "Let's get sorting button is clicked"
 const showForm = () => {
   let domString = `
-<div class = "container py-4" style = "1px black solid;">
+<div class = "container p-4 rounded" style = "background-color: #ffd140;">
   <form id = "studentForm">
-    <h4>Enter first year's name.</h4>
+    <h4 class = "text-center">Enter first year's name.</h4>
     <div class="form-group row">
-      <label for="input-student" class="col-sm-2 col-form-label">Name</label>
+      <label for="input-student" class="col-sm-2 col-form-label text-right">Name</label>
       <div class="col-sm-8">
         <input
         type="text"
@@ -33,31 +33,12 @@ const showForm = () => {
         id="input-student"/>
       </div>
       <div class="col-sm-2">
-        <button type="button" class="btn btn-info" id="btn-sort">Sort!</button>
+        <button type="button" class="btn btn-dark" id="btn-sort">Sort!</button>
       </div>
     </div>
   </form>
 </div>
 `;
-
-  // let domString = `<div class = "container-fluid text-center mb-3">
-  //                   <h4>Enter first year's name. </h4>
-  //                       </div>
-  //                   <div class = "name-input" >
-  //                    <form id="studentForm" class = "form-inline">
-  //                     <div class="form-group row">
-  //                     <label for="input-student" class="col-sm-2 col-form-label">Name:</label>
-  //                     <div class="col-sm-10">
-  //                         <input
-  //                         type="student"
-  //                         class="form-control"
-  //                         placeholder="Harry Potter"
-  //                         id="input-student"/>
-  //                             <button type="button" class="btn btn-info" id="btn-sort">Sort!</button>
-  //                     </div>
-  //                     </div>
-  //                  </form>
-  //                  </div>`;
   renderToDOM('sort-form', domString);
 };
 

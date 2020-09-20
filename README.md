@@ -65,4 +65,5 @@ const errorMessage = () => {
 ```
 
 ## Deployed Site
+[![Netlify Status](https://api.netlify.com/api/v1/badges/99726cc9-065c-43bd-bab4-7bfd3c075fcd/deploy-status)](https://app.netlify.com/sites/sorting-hat-cc/deploys)
 

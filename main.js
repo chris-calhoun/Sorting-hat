@@ -81,9 +81,9 @@ const cardBuilder = (arr, div) => {
   let domString = '';
   for (let i = 0; i < arr.length; i++) {
     if (arr !== expelledStudent) {
-      domString += `<div class="card m-4" id="${i}" style="width: 18rem; background-color: ${getHouseColor(
+      domString += `<div class="card m-4" id="${i}" style="width: 18rem; border-left: 20px solid ${getHouseColor(
         arr[i].house
-      )};">`;
+      )}; border: 10px solid ${getHouseColor(arr[i].house)};">`;
       domString += `<div class="card-body text-center">`;
       domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
       domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${arr[i].house}</h6>`;
@@ -115,13 +115,13 @@ const expelStudent = (e) => {
 // change color of card to house colors
 const getHouseColor = (house) => {
   if (house === 'Gryffindor') {
-    return 'red';
+    return '#7F0909';
   } else if (house === 'Slytherin') {
-    return 'green';
+    return '#1c3517';
   } else if (house === 'Hufflepuff') {
-    return 'blue';
+    return '#ffd140';
   } else if (house === 'Ravenclaw') {
-    return 'yellow';
+    return '#222F5B';
   }
 };
 

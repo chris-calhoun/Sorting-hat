@@ -8,11 +8,14 @@ This project required an understanding of event listeners, callback functions, a
 
 ## Build Status
 
-Reached MVP. Bonus features are under development.
+Reached MVP.
+Completed a few bonus features
+- section for expelled students
+- display appropriate house colors on student cards
 
 ## Screenshots
 
-N/A
+![Alt text](/images/sorting-hat-screenshot.png "Sorting Hat Website")
 
 ## Tech/Framwork
 Javascript ES6
@@ -22,6 +25,7 @@ Javascript ES6
 - takes user input
 - randomly assigns student into a Hogwarts' House
 - allows the user to expel students.
+- expelled students become Death Eaters!
 
 ## Code Example 
 ```

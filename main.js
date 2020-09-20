@@ -19,24 +19,45 @@ const renderToDOM = (divId, textToPrint) => {
 
 //show sort form when "Let's get sorting button is clicked"
 const showForm = () => {
-  let domString = `<div class = "container-fluid text-center mb-3">
-                    <h4>Enter first year's name. </h4>
-                        </div>
-                    <div class = "name-input">                  
-                     <form id="studentForm" class = "form-inline">
-                      <div class="form-group row">
-                      <label for="input-student" class="col-sm-2 col-form-label">Name:</label>
-                      <div class="col-sm-10">
-                          <input
-                          type="student"
-                          class="form-control"
-                          placeholder="Harry Potter"
-                          id="input-student"/>
-                              <button type="button" class="btn btn-info" id="btn-sort">Sort!</button>
-                      </div>
-                      </div>
-                   </form>
-                   </div>`;
+  let domString = `
+<div class = "container py-4" style = "1px black solid;">
+  <form id = "studentForm">
+    <h4>Enter first year's name.</h4>
+    <div class="form-group row">
+      <label for="input-student" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-8">
+        <input
+        type="text"
+        class="form-control"
+        placeholder="Harry Potter"
+        id="input-student"/>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-info" id="btn-sort">Sort!</button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+  // let domString = `<div class = "container-fluid text-center mb-3">
+  //                   <h4>Enter first year's name. </h4>
+  //                       </div>
+  //                   <div class = "name-input" >
+  //                    <form id="studentForm" class = "form-inline">
+  //                     <div class="form-group row">
+  //                     <label for="input-student" class="col-sm-2 col-form-label">Name:</label>
+  //                     <div class="col-sm-10">
+  //                         <input
+  //                         type="student"
+  //                         class="form-control"
+  //                         placeholder="Harry Potter"
+  //                         id="input-student"/>
+  //                             <button type="button" class="btn btn-info" id="btn-sort">Sort!</button>
+  //                     </div>
+  //                     </div>
+  //                  </form>
+  //                  </div>`;
   renderToDOM('sort-form', domString);
 };
 
@@ -78,16 +99,21 @@ const errorMessage = () => {
 const cardBuilder = (arr, div) => {
   let domString = '';
   for (let i = 0; i < arr.length; i++) {
-    domString += `<div class="card m-4" id="${i}" style="width: 18rem; background-color: ${getHouseColor(
-      arr[i].house
-    )};">`;
-    domString += `<div class="card-body text-center">`;
-    domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
-    domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${arr[i].house}</h6>`;
     if (arr !== expelledStudent) {
+      domString += `<div class="card m-4" id="${i}" style="width: 18rem; background-color: ${getHouseColor(
+        arr[i].house
+      )};">`;
+      domString += `<div class="card-body text-center">`;
+      domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
+      domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${arr[i].house}</h6>`;
       domString += `<button type="button" class="btn btn-danger" id=${i}>Expel</button>`;
+      domString += `</div></div>`;
+    } else {
+      domString += `<div class="card-body text-center">`;
+      domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
+      domString += `<div class = "container"><img src = "./images/Death_Eater.png" alt = "death eater symbol" width = "200px" </div>`;
+      domString += `</div></div>`;
     }
-    domString += `</div></div>`;
   }
   renderToDOM(div, domString);
 };

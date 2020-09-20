@@ -20,11 +20,11 @@ const renderToDOM = (divId, textToPrint) => {
 //show sort form when "Let's get sorting button is clicked"
 const showForm = () => {
   let domString = `
-<div class = "container p-4 rounded" style = "background-color: #ffd140;">
+<div class = "container p-4 rounded">
   <form id = "studentForm">
     <h4 class = "text-center">Enter first year's name.</h4>
     <div class="form-group row">
-      <label for="input-student" class="col-sm-2 col-form-label text-right">Name</label>
+      <label for="input-student" class="col-sm-2 col-form-label text-right" style = "font-weight: bold;">Name</label>
       <div class="col-sm-8">
         <input
         type="text"

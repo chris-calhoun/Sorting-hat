@@ -6,3 +6,16 @@
 hr {
   color: #ffd140;
 }
+
+.student,
+.expelled {
+  min-height: 40vh;
+}
+
+.student {
+  background: lightslategrey;
+}
+
+.expelled {
+  background-color: black;
+}

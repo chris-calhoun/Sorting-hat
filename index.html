@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sorting Hat</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="main.css" />
     <link
       rel="stylesheet"
@@ -13,12 +17,14 @@
     />
   </head>
   <body>
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color: #1c3517">
       <div class="title text-center">
-        <h1 class="display-4">Welcome to Hogwarts</h1>
+        <h1 class="display-4" style="color: #ffd140; font-family: hPotterFont">
+          Welcome to Hogwarts
+        </h1>
       </div>
 
-      <p class="lead">
+      <p class="lead" style="color: white; font-family: 'PT Serif', serif">
         A thousand years or more ago, When I was newly sewn, There lived four
         wizards of renown, Whose name are still well-known: Bold Gryffindor from
         wild moor, Fair Ravlenclaw from glen, Sweet Hufflepuff from valley
@@ -36,15 +42,20 @@
         snug around your ears, I've never yet been wrong, I'll have alook inside
         your mind And tell where you belong!
       </p>
-      <hr class="my-4" />
-      <div class="text-center">
+      <hr style="border-color: #ffd140" class="my-4" />
+      <div class="text-center" style="color: white">
         <p>
           Click the button to find out which of the four magical houses you will
           be join!
         </p>
       </div>
       <div id="btnShowFormDiv" class="text-center">
-        <button id="btnShowForm" type="button" class="btn btn-primary">
+        <button
+          id="btnShowForm"
+          type="button"
+          class="btn btn-danger"
+          style="font-weight: bolder"
+        >
           Let's get sorting!
         </button>
       </div>
@@ -61,18 +72,28 @@
       class="d-flex flex-wrap justify-content-around"
       id="error-message"
     ></div>
-    <!-- Div for the student cards-->
-    <h3 class="d-flex flex-wrap justify-content-around">Students</h3>
-    <div
-      id="student-cards"
-      class="d-flex flex-wrap justify-content-around"
-    ></div>
-    <!-- Div for the expelled student cards-->
-    <h3 class="d-flex flex-wrap justify-content-around">Expelled</h3>
-    <div
-      id="expelled-students"
-      class="d-flex flex-wrap justify-content-around"
-    ></div>
+
+    <!-- Student Cards -->
+    <div class="row">
+      <div class="col student">
+        <h3
+          class="text-center my-4"
+          style="color: white; font-family: hPotterFont; font-size: 48px"
+        >
+          Students
+        </h3>
+        <div class="row justify-content-center" id="student-cards"></div>
+      </div>
+      <div class="col expelled">
+        <h3
+          class="text-center my-4"
+          style="color: white; font-family: hPotterFont; font-size: 48px"
+        >
+          Expelled
+        </h3>
+        <div class="row justify-content-center" id="expelled-students"></div>
+      </div>
+    </div>
 
     <!-- Javascript scripts -->
     <script

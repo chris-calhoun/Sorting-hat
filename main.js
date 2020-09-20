@@ -84,7 +84,9 @@ const cardBuilder = (arr, div) => {
     domString += `<div class="card-body text-center">`;
     domString += `<h5 class="card-title-${i}">${arr[i].studentName}</h5>`;
     domString += `<h6 id = "card-house" class="card-subtitle mb-2 text-muted">${arr[i].house}</h6>`;
-    domString += `<button type="button" class="btn btn-danger" id=${i}>Expel</button>`;
+    if (arr !== expelledStudent) {
+      domString += `<button type="button" class="btn btn-danger" id=${i}>Expel</button>`;
+    }
     domString += `</div></div>`;
   }
   renderToDOM(div, domString);
